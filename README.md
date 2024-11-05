@@ -14,7 +14,7 @@ Run the Storybook
 npm run storybook
 ```
 
-Now a browser tab should be open with the local Storybook.  
+Now a browser tab should open with the local Storybook.  
 In case it doesn't - head over to http://localhost:6006
 
 ### Creating Storybook Stories
