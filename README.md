@@ -2,6 +2,9 @@
 Welcome to your home assignment repository template 😄👍🏼.  
 This repo scaffolds a React + [Storybook](https://storybook.js.org/) + Typescript project for you so you could focus on your assignment rather than everything around it.
 
+### How to Start
+Fork the repository to have your own copy of it, and start working 😁
+
 ### How to Run
 
 Install the dependencies
