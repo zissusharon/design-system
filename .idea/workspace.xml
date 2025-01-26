@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec91c86c-5a36-4610-829a-088d016c8f23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.storybook/preview-hard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.storybook/preview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.storybook/preview.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.constans.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.styles.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +47,22 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/sharonzissu/Desktop/melio/penny-home-assignment",
+    "last_opened_file_path": "/Users/sharonzissu/Desktop/melio/penny-home-assignment/src/components",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/sharonzissu/Desktop/melio/penny-home-assignment/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
     "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -60,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737923218762</updated>
       <workItem from="1737923225141" duration="690000" />
-      <workItem from="1737923937373" duration="604000" />
+      <workItem from="1737923937373" duration="822000" />
     </task>
     <task id="LOCAL-00001" summary="install dependencies">
       <option name="closed" value="true" />
@@ -94,7 +106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737924424948</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add theme">
+      <option name="closed" value="true" />
+      <created>1737924641110</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1737924641110</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +124,7 @@
     <MESSAGE value="install dependencies" />
     <MESSAGE value="update tsconfig.json: add path mapping for easier imports" />
     <MESSAGE value="handle path mapping for easier imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="handle path mapping for easier imports" />
+    <MESSAGE value="add theme" />
+    <option name="LAST_COMMIT_MESSAGE" value="add theme" />
   </component>
 </project>
