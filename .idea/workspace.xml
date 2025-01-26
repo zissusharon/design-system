@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec91c86c-5a36-4610-829a-088d016c8f23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.constans.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.stories.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.styles.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/IconButton/IconButton.constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/IconButton/IconButton.stories.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/IconButton/IconButton.styles.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/IconButton/IconButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/IconButton/IconButton.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737923218762</updated>
       <workItem from="1737923225141" duration="690000" />
-      <workItem from="1737923937373" duration="822000" />
+      <workItem from="1737923937373" duration="863000" />
     </task>
     <task id="LOCAL-00001" summary="install dependencies">
       <option name="closed" value="true" />
@@ -114,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737924641110</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add button component">
+      <option name="closed" value="true" />
+      <created>1737924776036</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737924776036</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +133,7 @@
     <MESSAGE value="update tsconfig.json: add path mapping for easier imports" />
     <MESSAGE value="handle path mapping for easier imports" />
     <MESSAGE value="add theme" />
-    <option name="LAST_COMMIT_MESSAGE" value="add theme" />
+    <MESSAGE value="add button component" />
+    <option name="LAST_COMMIT_MESSAGE" value="add button component" />
   </component>
 </project>
