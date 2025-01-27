@@ -7,6 +7,10 @@ export const palette = {
     secondary: '#646F87',
     inverse: '#FFFFFF',
   },
+  action: {
+    primary: '#7849FF',
+    error: '#D80E25',
+  },
   common: {
     white: '#FFFFFF',
     black: '#000000',

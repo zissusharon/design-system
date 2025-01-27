@@ -7,9 +7,9 @@ export const spacing = (value: number | string) => {
     return 'auto';
   }
 
-  if (spacingSizeArray.includes(value as number)) {
-    return `${value}px`;
+  if (!spacingSizeArray.includes(value as number)) {
+    console.warn(`Spacing with ${value} value is not from the spacing system`);
   }
 
-  throw new Error(`Spacing with ${value} value is not from the spacing system`);
+  return `${value}px`;
 };
