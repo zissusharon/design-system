@@ -1,63 +1,111 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React, { FC, useState } from 'react';
-import { Button } from 'src/components/Button/Button';
-import { Drawer, DrawerAnchor } from './Drawer';
+import styled from 'styled-components';
+import { DrawerPlacement } from './Drawer';
+import { Button, Drawer, Flex } from 'src/components';
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof Drawer> = {
   title: 'Components/Drawer',
   component: Drawer,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
+    docs: {
+      description: {
+        component: `Drawer component implemented on top of the Modal component`,
+      },
+    },
   },
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
-  argTypes: {},
+  tags: ['autodocs'],
+  argTypes: {
+    placement: {
+      table: {
+        type: { summary: 'left | top | right | bottom' },
+        defaultValue: { summary: 'right' },
+      },
+    },
+    size: {
+      table: {
+        type: { summary: 'sm | md' },
+        defaultValue: { summary: 'md' },
+      },
+    },
+    disableEscapeKeyDown: {
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Drawer>;
 
-const AlertDialogStoryComponent: FC<{ anchor: DrawerAnchor }> = ({
-  anchor,
-}) => {
+const AlertDialogStoryComponent: FC<{
+  placement: DrawerPlacement;
+  size?: 'sm' | 'md';
+  title: string;
+}> = ({ placement, size, title }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>{anchor}</Button>
+      <Button
+        variant="contained"
+        color="primary"
+        size="sm"
+        onClick={() => setIsOpen(true)}
+      >
+        {placement}
+      </Button>
 
       <Drawer
         isOpen={isOpen}
+        size={size}
         onClose={() => setIsOpen(false)}
-        anchor={anchor}
-        title="Vendor details"
+        placement={placement}
+        title={title}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing Nullam a arcu est.
-        Nulla facilisi. Donec nec sem aliquet, laoreet nisi et, bibendum tellus.
-        Aenean sed nibh lorem.
+        <DrawerContent>
+          Lorem ipsum dolor sit amet, consectetur adipiscing Nullam a arcu est.
+          Nulla facilisi. Donec nec sem aliquet, laoreet nisi et, bibendum
+          tellus. Aenean sed nibh lorem.
+        </DrawerContent>
       </Drawer>
     </>
   );
 };
 
-export const Default: Story = {
-  name: 'Drawer',
-  render: () => {
-    return (
-      <>
-        {Object.values(DrawerAnchor).map((anchor) => (
-          <AlertDialogStoryComponent
-            key={anchor}
-            anchor={anchor as DrawerAnchor}
-          />
-        ))}
-      </>
-    );
-  },
+const DrawerContent = styled.div`
+  padding: ${({ theme }) => theme.spacing(16)};
+`;
+
+const drawerPlacements = ['left', 'top', 'right', 'bottom'];
+
+export const MediumSize: Story = {
+  render: () => (
+    <Flex gap={8}>
+      {drawerPlacements.map((placement) => (
+        <AlertDialogStoryComponent
+          key={placement}
+          placement={placement as DrawerPlacement}
+          title="Medium Size"
+        />
+      ))}
+    </Flex>
+  ),
 };
 
-// export const WithOutCloseIconButton: Story = {
-//   name: 'Alert Modal',
-//   render: () => AlertDialogStoryComponent(),
-// };
+export const SmallSize: Story = {
+  render: () => (
+    <Flex gap={8}>
+      {drawerPlacements.map((placement) => (
+        <AlertDialogStoryComponent
+          key={placement}
+          placement={placement as DrawerPlacement}
+          size="sm"
+          title="Small Size"
+        />
+      ))}
+    </Flex>
+  ),
+};

@@ -1,18 +1,7 @@
-import React, { useEffect, ReactNode, MouseEvent, FC } from 'react';
+import React, { useEffect, FC } from 'react';
 import { Backdrop } from 'src/components/Backdrop/Backdrop';
-import { modalBaseStyles } from 'src/components/Modal/Modal.styles';
-import { CloseModalReason } from 'src/components/Modal/Modal.types';
+import { ModalProps } from 'src/components/Modal/Modal.types';
 import styled, { css } from 'styled-components';
-
-export interface ModalProps {
-  isOpen: boolean;
-  children?: ReactNode;
-  onClose: (
-    event: MouseEvent<HTMLDivElement | HTMLButtonElement> | KeyboardEvent,
-    reason: CloseModalReason,
-  ) => void;
-  disableEscapeKeyDown?: boolean;
-}
 
 export const Modal: FC<ModalProps> = ({
   isOpen,
@@ -37,31 +26,28 @@ export const Modal: FC<ModalProps> = ({
   }, [isOpen, onClose]);
 
   return (
-    <Wrapper isOpen={isOpen}>
+    <Container isOpen={isOpen}>
       <Backdrop
         isOpen={isOpen}
         onClick={(event) => onClose(event, 'backdropClick')}
       />
 
       {children}
-    </Wrapper>
+    </Container>
   );
 };
 
-const Wrapper = styled.div<{ isOpen: boolean }>`
-  ${({ theme, isOpen }) => css`
-    ${modalBaseStyles(theme, isOpen)};
+const Container = styled.div<{ isOpen: boolean }>`
+  ${({ isOpen }) => css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    visibility: ${isOpen ? 'visible' : 'hidden'};
+    opacity: ${isOpen ? 1 : 0};
+    transition:
+      opacity 0.3s ease-in-out,
+      visibility 0.3s ease-in-out;
+    width: 100vw;
+    height: 100vh;
   `}
 `;
-
-// const ModalContainer = styled.div`
-//   ${({ theme }) => css`
-//     position: absolute;
-//     width: fit-content;
-//     left: 50%;
-//     top: 50%;
-//     transform: translate(-50%, -50%);
-//     padding: ${theme.spacing(24)};
-//     background-color: ${theme.palette.common.white};
-//   `}
-// `;

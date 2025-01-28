@@ -1,6 +1,6 @@
 import { css, DefaultTheme } from 'styled-components';
 
-export const dialogBaseStyle = (theme: DefaultTheme) => css`
+export const dialogBaseStyles = (theme: DefaultTheme) => css`
   position: absolute;
   left: 50%;
   top: 20%;
@@ -12,7 +12,7 @@ export const dialogBaseStyle = (theme: DefaultTheme) => css`
   max-height: 400px;
 `;
 
-const dialogSmallSizeStyle = () => css`
+const dialogSmallSizeStyles = () => css`
   width: 560px;
 
   @media (max-width: 500px) {
@@ -28,5 +28,5 @@ const dialogSmallSizeStyle = () => css`
 `;
 
 export const dialogSizeStyle = {
-  sm: dialogSmallSizeStyle,
+  sm: dialogSmallSizeStyles,
 };

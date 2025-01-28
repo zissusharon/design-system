@@ -1,11 +1,8 @@
-import React, { ReactNode, FC } from 'react';
+import React, { FC } from 'react';
+import { DialogTitleProps } from 'src/components/Dialog/Dialog.types';
 import styled, { css } from 'styled-components';
 
-interface Props {
-  children: ReactNode;
-}
-
-export const DialogTitle: FC<Props> = ({ children }) => {
+export const DialogTitle: FC<DialogTitleProps> = ({ children }) => {
   return <Container>{children}</Container>;
 };
 

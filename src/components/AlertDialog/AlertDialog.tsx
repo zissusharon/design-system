@@ -2,12 +2,8 @@ import React, { FC } from 'react';
 import { PiWarningCircleFill } from 'react-icons/pi';
 import { Button } from 'src/components/Button/Button';
 import { ButtonProps } from 'src/components/Button/Button.types';
-import { ModalProps } from 'src/components/Modal/Modal';
-import { DialogBody } from 'src/components/Dialog/DialogBody';
-import { DialogFooter } from 'src/components/Dialog/DialogFooter';
-import { DialogHeader } from 'src/components/Dialog/DialogHeader';
-import { DialogTitle } from 'src/components/Dialog/DialogTitle';
-import { Dialog } from 'src/components/Dialog/Dialog';
+import { Dialog } from 'src/components';
+import { DialogProps } from 'src/components/Dialog/Dialog.types';
 import styled, { css } from 'styled-components';
 
 interface AlertModalButton
@@ -15,7 +11,7 @@ interface AlertModalButton
   text?: string;
 }
 
-interface Props extends ModalProps {
+interface Props extends DialogProps {
   title: string;
   submitButtonProps: AlertModalButton;
   closeButtonProps: AlertModalButton;
@@ -32,19 +28,19 @@ export const AlertDialog: FC<Props> = ({
 }) => {
   return (
     <Dialog isOpen={isOpen} onClose={onClose} {...rest}>
-      <DialogHeader onClose={onClose}>
+      <Dialog.Header onClose={onClose}>
         <HeaderContainer>
           <WarningIconContainer>
             <PiWarningCircleFill size={36} color="red" />
           </WarningIconContainer>
 
-          <DialogTitle>{title}</DialogTitle>
+          <Dialog.Title>{title}</Dialog.Title>
         </HeaderContainer>
-      </DialogHeader>
+      </Dialog.Header>
 
-      <DialogBody>{children}</DialogBody>
+      <Dialog.Body>{children}</Dialog.Body>
 
-      <DialogFooter>
+      <Dialog.Footer>
         <ButtonsContainer>
           <Button variant="outlined" color="inherit" {...closeButtonProps}>
             {closeButtonProps.text || 'Cancel'}
@@ -54,7 +50,7 @@ export const AlertDialog: FC<Props> = ({
             {submitButtonProps.text || 'Delete'}
           </Button>
         </ButtonsContainer>
-      </DialogFooter>
+      </Dialog.Footer>
     </Dialog>
   );
 };

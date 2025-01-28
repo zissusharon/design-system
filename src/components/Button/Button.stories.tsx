@@ -1,46 +1,47 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
-import { FiPlus, FiDownload, FiEdit } from 'react-icons/fi';
-import styled from 'styled-components';
+import { Flex } from 'src/components/Flex/Flex';
+import { RiDeleteBin5Line } from 'react-icons/ri';
+import { IoMdSend } from 'react-icons/io';
+import { Button } from 'src/components';
 
 const meta: Meta<typeof Button> = {
-  title: 'Components/Buttons/Button',
+  title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'A versatile button component that supports different variants, colors, sizes, and icon placements.',
+      },
+    },
   },
   argTypes: {
     variant: {
-      description: 'The variant of the button',
       table: {
         type: { summary: 'default | contained | outlined' },
         defaultValue: { summary: 'default' },
       },
-      control: 'select',
       options: ['default', 'contained', 'outlined'],
     },
     color: {
-      description: 'The color of the button',
       table: {
         type: { summary: 'primary | inherit | error' },
         defaultValue: { summary: 'inherit' },
       },
-      control: 'select',
       options: ['primary', 'inherit', 'error'],
     },
     size: {
-      description: 'The size of the button',
       table: {
         type: { summary: 'sm | md' },
         defaultValue: { summary: 'md' },
       },
-      control: 'select',
       options: ['sm', 'md'],
     },
     icon: {
-      description: 'Icon component from react-icons',
+      description: 'icon component from react-icons',
       table: {
         type: { summary: 'IconType' },
       },
@@ -51,8 +52,6 @@ const meta: Meta<typeof Button> = {
         type: { summary: 'start | end' },
         defaultValue: { summary: 'start' },
       },
-      control: 'select',
-      options: ['start', 'end'],
     },
   },
 };
@@ -61,185 +60,115 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Basic: Story = {
-  args: {
-    children: 'Button',
-    variant: 'contained',
-    color: 'primary',
-  },
+  render: () => (
+    <Flex gap={12}>
+      <Button variant="default">Default</Button>
+      <Button variant="contained">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
+    </Flex>
+  ),
 };
 
-export const AllVariants = {
+export const Color: Story = {
   render: () => (
-    <Flex>
-      <Flex>
-        <SectionTitle>Contained</SectionTitle>
+    <Flex gap={12}>
+      <Flex direction="column" gap={12}>
+        <Button variant="default" color="inherit">
+          Inherit
+        </Button>
 
-        <ButtonGroup>
-          <Button variant="contained" color="primary">
-            Primary
-          </Button>
+        <Button variant="default" color="primary">
+          Primary
+        </Button>
 
-          <Button variant="contained" color="inherit">
-            Secondary
-          </Button>
-
-          <Button variant="contained" color="error">
-            Error
-          </Button>
-        </ButtonGroup>
+        <Button variant="default" color="error">
+          Error
+        </Button>
       </Flex>
 
-      <Section>
-        <SectionTitle>Outlined</SectionTitle>
+      <Flex direction="column" gap={12}>
+        <Button variant="contained" color="inherit">
+          Inherit
+        </Button>
 
-        <ButtonGroup>
-          <Button variant="outlined" color="primary">
-            Primary
-          </Button>
+        <Button variant="contained" color="primary">
+          Primary
+        </Button>
 
-          <Button variant="outlined" color="inherit">
-            Secondary
-          </Button>
+        <Button variant="contained" color="error">
+          Error
+        </Button>
+      </Flex>
 
-          <Button variant="outlined" color="error">
-            Error
-          </Button>
-        </ButtonGroup>
-      </Section>
+      <Flex direction="column" gap={12}>
+        <Button variant="outlined" color="inherit">
+          Inherit
+        </Button>
 
-      <Section>
-        <SectionTitle>Default</SectionTitle>
+        <Button variant="outlined" color="primary">
+          Primary
+        </Button>
 
-        <ButtonGroup>
-          <Button variant="default" color="primary">
-            Primary
-          </Button>
-
-          <Button variant="default" color="inherit">
-            Secondary
-          </Button>
-
-          <Button variant="default" color="error">
-            Error
-          </Button>
-        </ButtonGroup>
-      </Section>
+        <Button variant="outlined" color="error">
+          Error
+        </Button>
+      </Flex>
     </Flex>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Overview of all button variants and colors.',
-      },
-    },
-  },
 };
 
-export const Sizes = {
+export const Sizes: Story = {
   render: () => (
-    <Flex>
-      <Section>
-        <SectionTitle>Medium (Default)</SectionTitle>
+    <Flex gap={12}>
+      <Flex direction="column" gap={16}>
+        <Button variant="default" color="primary" size="sm">
+          Small
+        </Button>
 
-        <ButtonGroup>
-          <Button variant="contained" size="md">
-            Contained
-          </Button>
+        <Button variant="default" color="primary" size="md">
+          Medium
+        </Button>
+      </Flex>
 
-          <Button variant="outlined" size="md">
-            Outlined
-          </Button>
+      <Flex direction="column" gap={16}>
+        <Button variant="contained" color="primary" size="sm">
+          Small
+        </Button>
 
-          <Button variant="default" size="md">
-            Default
-          </Button>
-        </ButtonGroup>
-      </Section>
+        <Button variant="contained" color="primary" size="md">
+          Medium
+        </Button>
+      </Flex>
 
-      <Section>
-        <SectionTitle>Small</SectionTitle>
+      <Flex direction="column" gap={16}>
+        <Button variant="outlined" size="sm">
+          Small
+        </Button>
 
-        <ButtonGroup>
-          <Button variant="contained" size="sm">
-            Contained
-          </Button>
-
-          <Button variant="outlined" size="sm">
-            Outlined
-          </Button>
-
-          <Button variant="default" size="sm">
-            Default
-          </Button>
-        </ButtonGroup>
-      </Section>
+        <Button variant="outlined" size="md">
+          Medium
+        </Button>
+      </Flex>
     </Flex>
   ),
 };
 
-export const WithIcons = {
+export const ButtonWithIcon: Story = {
+  name: 'Buttons with icons and label',
   render: () => (
-    <Flex>
-      <Section>
-        <SectionTitle>Start Icon</SectionTitle>
+    <Flex gap={12}>
+      <Button variant="outlined" color="inherit" icon={RiDeleteBin5Line}>
+        Contained
+      </Button>
 
-        <ButtonGroup>
-          <Button variant="contained" icon={FiPlus}>
-            Add Item
-          </Button>
-
-          <Button variant="outlined" icon={FiDownload}>
-            Download
-          </Button>
-
-          <Button variant="default" icon={FiEdit}>
-            Edit
-          </Button>
-        </ButtonGroup>
-      </Section>
-
-      <Section>
-        <SectionTitle>End Icon</SectionTitle>
-
-        <ButtonGroup>
-          <Button variant="contained" icon={FiPlus} iconPlacement="end">
-            Add Item
-          </Button>
-
-          <Button variant="outlined" icon={FiDownload} iconPlacement="end">
-            Download
-          </Button>
-
-          <Button variant="default" icon={FiEdit} iconPlacement="end">
-            Edit
-          </Button>
-        </ButtonGroup>
-      </Section>
+      <Button
+        variant="contained"
+        color="primary"
+        icon={IoMdSend}
+        iconPlacement="end"
+      >
+        Outlined
+      </Button>
     </Flex>
   ),
 };
-
-const Flex = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  max-width: 800px;
-`;
-
-const Section = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-const SectionTitle = styled.h3`
-  margin: 0;
-  font-size: 16px;
-  color: ${({ theme }) => theme.palette.text.secondary};
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-`;

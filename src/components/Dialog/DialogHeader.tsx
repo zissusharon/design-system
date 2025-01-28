@@ -1,29 +1,14 @@
-import React, { ReactNode, FC } from 'react';
-import { RiCloseLargeFill } from 'react-icons/ri';
-import { IconButton } from 'src/components/Button/IconButton/IconButton';
+import React, { FC } from 'react';
+import { CloseButton } from 'src/components/CloseButton/CloseButton';
+import { DialogHeaderProps } from 'src/components/Dialog/Dialog.types';
 import styled, { css } from 'styled-components';
 
-interface Props {
-  children: ReactNode;
-  onClose?: (
-    event: React.MouseEvent<HTMLButtonElement>,
-    reason: 'closeButtonClick',
-  ) => void;
-}
-
-export const DialogHeader: FC<Props> = ({ children, onClose }) => (
+export const DialogHeader: FC<DialogHeaderProps> = ({ children, onClose }) => (
   <Container>
     {children}
 
     {onClose && (
-      <CloseIconButtonContainer>
-        <IconButton
-          variant="outlined"
-          color="inherit"
-          onClick={(event) => onClose(event, 'closeButtonClick')}
-          icon={RiCloseLargeFill}
-        />
-      </CloseIconButtonContainer>
+      <CloseButton onClick={(event) => onClose(event, 'closeButtonClick')} />
     )}
   </Container>
 );
@@ -37,8 +22,4 @@ const Container = styled.div`
     flex-shrink: 0;
     gap: ${theme.spacing(8)};
   `}
-`;
-
-const CloseIconButtonContainer = styled.div`
-  align-self: flex-start;
 `;

@@ -1,24 +1,17 @@
 import React, { FC } from 'react';
-import { IconType } from 'react-icons';
 import { baseButtonStyles } from 'src/components/Button/Button.styles';
 import {
   iconButtonSizeStyles,
+  iconButtonSizeValue,
   iconButtonVariantStyles,
-} from 'src/components/Button/IconButton/IconButton.constants';
-import { IconButtonSize } from 'src/components/Button/IconButton/IconButton.types';
+} from 'src/components/IconButton/IconButton.styles';
+import {
+  IconButtonProps,
+  IconButtonSize,
+} from 'src/components/IconButton/IconButton.types';
 import styled, { css } from 'styled-components';
 
-import {
-  ButtonColor,
-  ButtonProps,
-  ButtonVariant,
-} from 'src/components/Button/Button.types';
-
-interface IconButtonProps
-  extends Omit<ButtonProps, 'children' | 'size' | 'iconPlacement'> {
-  icon: IconType;
-  size?: IconButtonSize;
-}
+import { ButtonColor, ButtonVariant } from 'src/components/Button/Button.types';
 
 export const IconButton: FC<IconButtonProps> = ({
   icon: IconComponent,
@@ -28,7 +21,7 @@ export const IconButton: FC<IconButtonProps> = ({
   ...rest
 }) => (
   <Container variant={variant} size={size} color={color} {...rest}>
-    <IconComponent size={24} />
+    <IconComponent size={iconButtonSizeValue[size]} />
   </Container>
 );
 

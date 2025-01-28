@@ -5,12 +5,15 @@ import {
   ButtonSize,
   ButtonVariant,
 } from 'src/components/Button/Button.types';
+
 import {
+  baseButtonStyles,
   buttonSizeStyles,
   buttonVariantStyles,
-} from 'src/components/Button/Button.utils';
-import { baseButtonStyles } from 'src/components/Button/Button.styles';
+} from 'src/components/Button/Button.styles';
 import styled, { css } from 'styled-components';
+
+const ICON_SIZE = 16;
 
 export const Button: FC<ButtonProps> = ({
   variant = 'default',
@@ -22,11 +25,15 @@ export const Button: FC<ButtonProps> = ({
   ...rest
 }) => (
   <Container variant={variant} size={size} color={color} {...rest}>
-    {IconComponent && iconPlacement === 'start' && <IconComponent size={16} />}
+    {IconComponent && iconPlacement === 'start' && (
+      <IconComponent size={ICON_SIZE} />
+    )}
 
     {children}
 
-    {IconComponent && iconPlacement === 'end' && <IconComponent size={16} />}
+    {IconComponent && iconPlacement === 'end' && (
+      <IconComponent size={ICON_SIZE} />
+    )}
   </Container>
 );
 

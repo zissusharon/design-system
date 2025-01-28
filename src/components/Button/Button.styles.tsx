@@ -12,6 +12,7 @@ export const baseButtonStyles = (theme: DefaultTheme) => css`
   line-height: 20px;
   border: none;
   cursor: pointer;
+  flex-shrink: 0;
 `;
 
 export const defaultButtonStyles = (
@@ -49,7 +50,7 @@ export const outlinedButtonStyles = (
 ) => css`
   color: ${buttonColorValue(color, theme)};
   background-color: ${theme.palette.common.white};
-  border: 1px solid ${theme.palette.grey[50]};
+  border: 1px solid ${theme.palette.gray[50]};
 `;
 
 export const smallSizeStyles = (theme: DefaultTheme) => css`
@@ -66,3 +67,14 @@ export const mediumSizeStyles = (theme: DefaultTheme) => css`
 
 export const buttonColorValue = (color: ButtonColor, theme: DefaultTheme) =>
   color === 'inherit' ? 'inherit' : theme.palette.action[color];
+
+export const buttonVariantStyles = {
+  default: defaultButtonStyles,
+  contained: containedButtonStyles,
+  outlined: outlinedButtonStyles,
+};
+
+export const buttonSizeStyles = {
+  sm: smallSizeStyles,
+  md: mediumSizeStyles,
+};

@@ -1,6 +1,10 @@
 import { ButtonColor } from 'src/components/Button/Button.types';
 import { css, DefaultTheme } from 'styled-components';
-import { outlinedButtonStyles } from 'src/components/Button/Button.styles';
+import {
+  containedButtonStyles,
+  defaultButtonStyles,
+  outlinedButtonStyles,
+} from 'src/components/Button/Button.styles';
 
 export const outlinedIconButtonStyles = (
   theme: DefaultTheme,
@@ -18,3 +22,17 @@ export const mediumSizeStyles = (theme: DefaultTheme) => css`
   height: 40px;
   width: 40px;
 `;
+
+export const iconButtonVariantStyles = {
+  contained: containedButtonStyles,
+  outlined: outlinedIconButtonStyles,
+  default: defaultButtonStyles,
+};
+
+export const iconButtonSizeStyles = {
+  md: mediumSizeStyles,
+};
+
+export const iconButtonSizeValue = {
+  md: 24,
+};

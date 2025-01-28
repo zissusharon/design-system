@@ -1,25 +1,48 @@
-import React, { FC } from 'react';
-import { Modal, ModalProps } from 'src/components/Modal/Modal';
+import React, { FC, ReactNode } from 'react';
+import {
+  DialogBodyProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogProps,
+  DialogTitleProps,
+} from 'src/components/Dialog/Dialog.types';
+import { DialogBody } from 'src/components/Dialog/DialogBody';
+import { DialogFooter } from 'src/components/Dialog/DialogFooter';
+import { DialogHeader } from 'src/components/Dialog/DialogHeader';
+import { DialogTitle } from 'src/components/Dialog/DialogTitle';
+import { Modal } from 'src/components/Modal/Modal';
 import { ModalSize } from 'src/components/Modal/Modal.types';
 import {
-  dialogBaseStyle,
+  dialogBaseStyles,
   dialogSizeStyle,
 } from 'src/components/Dialog/Dialog.styles';
 import styled, { css } from 'styled-components';
 
-interface Props extends ModalProps {
-  size?: 'sm';
+interface DialogComponent extends FC<DialogProps> {
+  Header: FC<DialogHeaderProps>;
+  Title: FC<DialogTitleProps>;
+  Body: FC<DialogBodyProps>;
+  Footer: FC<DialogFooterProps>;
 }
 
-export const Dialog: FC<Props> = ({ size = 'sm', children, ...rest }) => (
+export const Dialog: DialogComponent = ({
+  size = 'sm',
+  children,
+  ...rest
+}: DialogProps): ReactNode => (
   <Modal {...rest}>
-    <DialogContainer size={size}>{children}</DialogContainer>
+    <Container size={size}>{children}</Container>
   </Modal>
 );
 
-const DialogContainer = styled.div<{ size: ModalSize }>`
+const Container = styled.div<{ size: ModalSize }>`
   ${({ theme, size }) => css`
-    ${dialogBaseStyle(theme)};
+    ${dialogBaseStyles(theme)};
     ${dialogSizeStyle[size]};
   `}
 `;
+
+Dialog.Header = DialogHeader;
+Dialog.Title = DialogTitle;
+Dialog.Body = DialogBody;
+Dialog.Footer = DialogFooter;

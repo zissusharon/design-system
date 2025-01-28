@@ -1,11 +1,8 @@
-import React, { ReactNode, FC } from 'react';
+import React, { FC } from 'react';
+import { DialogFooterProps } from 'src/components/Dialog/Dialog.types';
 import styled, { css } from 'styled-components';
 
-interface Props {
-  children: ReactNode;
-}
-
-export const DialogFooter: FC<Props> = ({ children }) => (
+export const DialogFooter: FC<DialogFooterProps> = ({ children }) => (
   <Container>{children}</Container>
 );
 

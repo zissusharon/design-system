@@ -1,28 +1,23 @@
 import React, { FC } from 'react';
-import { RiCloseLargeFill } from 'react-icons/ri';
-import { IconButton } from 'src/components/Button/IconButton/IconButton';
-import { Modal, ModalProps } from 'src/components/Modal/Modal';
+import { CloseButton } from 'src/components/CloseButton/CloseButton';
+import { Modal } from 'src/components/Modal/Modal';
+import { ModalProps } from 'src/components/Modal/Modal.types';
 
-import { drawerBaseStyles, drawerSizeStyles } from './Drawer.styles';
+import { drawerPositionStyles, drawerSizeStyles } from './Drawer.styles';
 import styled, { css } from 'styled-components';
 
 export type DrawerSize = 'sm' | 'md';
-export enum DrawerAnchor {
-  Left = 'left',
-  Right = 'right',
-  Top = 'top',
-  Bottom = 'bottom',
-}
+export type DrawerPlacement = 'left' | 'right' | 'top' | 'bottom';
 
 interface Props extends ModalProps {
-  anchor?: DrawerAnchor;
+  placement?: DrawerPlacement;
   size?: DrawerSize;
-  title: string;
+  title?: string;
 }
 
 export const Drawer: FC<Props> = ({
   isOpen,
-  anchor = DrawerAnchor.Right,
+  placement = 'right',
   size = 'md',
   title,
   children,
@@ -30,21 +25,18 @@ export const Drawer: FC<Props> = ({
   ...rest
 }) => (
   <Modal isOpen={isOpen} onClose={onClose} {...rest}>
-    <DrawerContainer isOpen={isOpen} anchor={anchor} size={size}>
-      <Header>
-        <Title>{title}</Title>
+    <DrawerContainer isOpen={isOpen} placement={placement} size={size}>
+      {title && (
+        <Header>
+          <Title>{title}</Title>
 
-        {onClose && (
-          <CloseIconButtonContainer>
-            <IconButton
+          {onClose && (
+            <CloseButton
               onClick={(event) => onClose(event, 'closeButtonClick')}
-              variant="outlined"
-              color="inherit"
-              icon={RiCloseLargeFill}
             />
-          </CloseIconButtonContainer>
-        )}
-      </Header>
+          )}
+        </Header>
+      )}
       {children}
     </DrawerContainer>
   </Modal>
@@ -52,12 +44,18 @@ export const Drawer: FC<Props> = ({
 
 const DrawerContainer = styled.div<{
   isOpen: boolean;
-  anchor: DrawerAnchor;
+  placement: DrawerPlacement;
   size: DrawerSize;
 }>`
-  ${({ theme, isOpen, anchor, size }) => css`
-    ${drawerBaseStyles(theme)}
-    ${drawerSizeStyles(isOpen, size, anchor)}
+  ${({ theme, isOpen, placement, size }) => css`
+    transition:
+      right 0.3s,
+      left 0.3s,
+      top 0.3s,
+      bottom 0.3s;
+    background-color: ${theme.palette.common.white};
+    ${drawerSizeStyles(size, placement)}
+    ${drawerPositionStyles(placement, size, isOpen)}
   `}
 `;
 
@@ -70,17 +68,13 @@ const Header = styled.div`
     padding: ${theme.spacing(4)};
     margin-bottom: ${theme.spacing(28)};
     gap: ${theme.spacing(16)};
-    border-bottom: 1px solid ${theme.palette.grey[200]};
+    border-bottom: 1px solid ${theme.palette.gray[200]};
     padding: ${theme.spacing(24)};
 
     @media (max-width: 500px) {
       padding: ${theme.spacing(16)};
     }
   `}
-`;
-
-const CloseIconButtonContainer = styled.div`
-  align-self: flex-start;
 `;
 
 const Title = styled.h2`
